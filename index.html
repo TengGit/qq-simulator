@@ -1,11 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="style.css" />
+<meta charset="utf-8">
+<title>QQ Chat Simulator</title>
+<link rel="stylesheet" type="text/css" href="style.css">
 <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 </script>
 </head>
 <body>
+<div id="container">
+  <div id="preview">
+  </div>
+  <div>
+    <form id="send-message">
+	  <label for="role">Select role: </label>
+	  <select name="role" id="role">
+	    <option value="Default">Default</option>
+	  </select>
+	  <input type="button" name="remove-role" value="Remove this role" class="button">
+	  <input type="text" name="text" size="20">
+	  <input type="button" name="send" value="Send" class="button">
+	</form>
+    <form id="style">
+	  <label for="avatar">Avatar: </label><input type="file" name="avatar" id="avatar" accept="image/*">
+	  <br>
+	  <label>Bubble: </label>
+	  <input type="radio" name="bubble" value="none" id="bubble-none" checked><label for="bubble-none">None</label>
+	  <input type="radio" name="bubble" value="custom" id="bubble-custom"><label for="bubble-custom">Custom</label>
+	  <br>
+	  <input type="button" name="add-role" value="Add this role" class="button">
+    </form>
+  </div>
+</div>
 </body>
 </html>
