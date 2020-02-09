@@ -38,9 +38,28 @@ label {
 .avatar-image {
 	border: none;
 	border-radius: 50%;
+	vertical-align: middle;
 }
 
 .content-preview {
 	margin: 10px 10%;
+	padding: 10px;
 	border: solid 1px gray;
+}
+
+.nickname {
+	font-size: 9px;
+	margin-left: 3px;
+	color: grey;
+}
+
+.message {
+	margin: 3px;
+	padding: 10px;
+	background-color: rgb(166, 216, 242);
+	border-radius: 5px;
+}
+
+.avatar-container {
+	vertical-align: top;
 }

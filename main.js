@@ -2,6 +2,8 @@ $(document).ready(function() {
 	"use strict";
 	
 	var imgSize = 32;
+	var defaultKey = "Default";
+	var defaultNickname = "Me";
 	
 	var formData = function(form) {
 		var result = {};
@@ -69,6 +71,7 @@ $(document).ready(function() {
 						"src": this._img
 					})
 				)
+				.addClass("avatar-container")
 			)
 			.append(New("td")
 				.append(New("div")
@@ -86,16 +89,25 @@ $(document).ready(function() {
 	
 	var addRole = function(nickname, data) {
 		var newRole = new Role(data);
-		if (roleData[nickname]) {
-			roleData[nickname].finalize();
+		var encoded = encodeURIComponent(nickname);
+		if (roleData[encoded]) {
+			roleData[encoded].finalize();
 		} else {
-			$("#role").append(New("option").val(nickname).text(nickname));
+			$("#role").append(New("option").val(encoded).text(nickname));
 		}
-		roleData[nickname] = newRole;
+		roleData[encoded] = newRole;
 	}
 	
 	var removeRole = function(nickname) {
-		roleData[nickname] && (roleData[nickname].finalize(), delete roleData[nickname]);
+		if (roleData[nickname]) {
+			if (nickname === defaultKey) {
+				alert("You can't delete default role!");
+				return;
+			}
+			roleData[nickname].finalize();
+			$("#role").children('[name="'+encodeURIComponent(nickname)+'"]').remove();
+			delete roleData[nickname];
+		}
 	}
 	
 	var sendMessage = function(nickname, message) {
@@ -122,5 +134,11 @@ $(document).ready(function() {
 	
 	$("#send").on("click", function() {
 		sendMessage($("#role").val(), $("#message").val());
+	});
+	
+	addRole(defaultKey, {
+		avatar: [],
+		bubble: "none",
+		nickname: defaultNickname
 	});
 });
