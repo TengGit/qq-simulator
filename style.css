@@ -34,3 +34,8 @@ label {
 .button:active {
 	background-color: #ccc;
 }
+
+.avatar-image {
+	border: none;
+	border-radius: 50%;
+}
