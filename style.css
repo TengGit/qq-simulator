@@ -1,0 +1,36 @@
+html, input {
+	font-family: "Lucida Sans", "Arial", sans-serif;
+}
+
+label {
+	vertical-align: middle;
+}
+
+.input-name {
+	font-weight: bold;
+}
+
+.controls {
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.control-group {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.button {
+	border: solid 1px gray;
+	border-radius: 3px;
+	padding: 3px 5px;
+	background-color: #eee;
+}
+
+.button:hover {
+	background-color: white;
+}
+
+.button:active {
+	background-color: #ccc;
+}

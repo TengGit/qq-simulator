@@ -12,9 +12,9 @@
 <div id="container">
   <div id="preview">
   </div>
-  <div>
-    <form id="send-message">
-	  <label for="role">Select role: </label>
+  <div class="controls">
+    <form id="send-message" class="control-group">
+	  <label for="role" class="input-name">Select role: </label>
 	  <select name="role" id="role">
 	    <option value="Default">Default</option>
 	  </select>
@@ -22,14 +22,14 @@
 	  <input type="text" name="text" size="20">
 	  <input type="button" name="send" value="Send" class="button">
 	</form>
-    <form id="style">
-	  <label for="avatar">Avatar: </label><input type="file" name="avatar" id="avatar" accept="image/*">
+    <form id="style" class="control-group">
+	  <label for="avatar" class="input-name">Avatar: </label><input type="file" name="avatar" id="avatar" accept="image/*">
 	  <br>
-	  <label>Bubble: </label>
+	  <label class="input-name">Bubble: </label>
 	  <input type="radio" name="bubble" value="none" id="bubble-none" checked><label for="bubble-none">None</label>
 	  <input type="radio" name="bubble" value="custom" id="bubble-custom"><label for="bubble-custom">Custom</label>
 	  <br>
-	  <input type="button" name="add-role" value="Add this role" class="button">
+	  <input type="button" name="add-role" value="Add this role" class="button center">
     </form>
   </div>
 </div>
