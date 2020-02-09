@@ -9,7 +9,9 @@
 </head>
 <body>
 <div id="container">
-  <div id="preview">
+  <div id="preview" class="content-preview">
+    <table id="conversation">
+	</table>
   </div>
   <div class="controls">
     <form id="send-message" class="control-group">
@@ -17,19 +19,21 @@
 	  <select name="role" id="role">
 	    <option value="Default">Default</option>
 	  </select>
-	  <input type="button" name="remove-role" value="Remove this role" class="button">
-	  <input type="text" name="text" size="20">
-	  <input type="button" name="send" value="Send" class="button">
+	  <input type="button" name="remove-role" id="remove-role" value="Remove this role" class="button">
+	  <input type="text" name="text" id="message" size="20">
+	  <input type="button" name="send" id="send" value="Send" class="button">
 	</form>
     <form id="style" class="control-group">
 	  <label for="avatar" class="input-name">Avatar: </label><input type="file" name="avatar" id="avatar" accept="image/*">
-	  <img id="avatar-preview" width="32" height="32" class="avatar-image">
+	  <img id="avatar-preview" width="32" height="32" class="avatar-image" src="default.jpg">
 	  <br>
 	  <label class="input-name">Bubble: </label>
 	  <input type="radio" name="bubble" value="none" id="bubble-none" checked><label for="bubble-none">None</label>
 	  <input type="radio" name="bubble" value="custom" id="bubble-custom"><label for="bubble-custom">Custom</label>
 	  <br>
-	  <input type="button" name="add-role" value="Add this role" class="button center">
+	  <label for="nickname" class="input-name">Nickname: </label>
+	  <input type="text" name="nickname" id="nickname">
+	  <input type="button" name="add-role" id="add-role" value="Add this role" class="button">
     </form>
   </div>
 </div>

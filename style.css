@@ -39,3 +39,8 @@ label {
 	border: none;
 	border-radius: 50%;
 }
+
+.content-preview {
+	margin: 10px 10%;
+	border: solid 1px gray;
+}
