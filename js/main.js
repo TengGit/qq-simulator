@@ -116,6 +116,10 @@ $(document).ready(function() {
 		$("#conversation").append(roleData[nickname].createMessage(message));
 	}
 	
+	$("#avatar-select-button").on("click", function() {
+		$("#avatar").click();
+	});
+	
 	$("#avatar").on("change", function() {
 		var files = this.files;
 		var preview = $("#avatar-preview").get(0);
