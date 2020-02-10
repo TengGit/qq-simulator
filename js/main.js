@@ -136,7 +136,7 @@ $(document).ready(function() {
                 .append(New("img").val(encoded).src="bubble")
             );
         }
-        rankData[encoded] = newRank;
+		bubbleData[encoded] = newBubble;
     }
 
 	var removeRank = function(rank) {
@@ -188,8 +188,12 @@ $(document).ready(function() {
 
 	$("#rank_form").on("submit", function(e) {
 		e.preventDefault();
-		addRank($("#rank").val(), formData($("#rank_forme").get(0)));
-	})
+		addRank($("#rank").val(), formData($("#rank_form").get(0)));
+	});
+	$("#bubble_form").on("submit", function(e) {
+		e.preventDefault();
+		addBubble($("#select_bubble").val(), formData($("#bubble_form").get(0)));
+	});
 
 	$("#remove-role").on("click", function() {
 		removeRole($("#role").val());
@@ -226,10 +230,12 @@ $(document).ready(function() {
 			$("#select_label_bubble").show();
 			$("#select_bubble").show();
 			$("#bubble_form").show();
+			$("#remove-bubble").show();
 		}else{
 			$("#select_label_bubble").hide();
 			$("#select_bubble").hide();
 			$("#bubble_form").hide();
+			$("#remove-bubble").hide();
 		}
 	});
 });
