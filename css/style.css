@@ -9,6 +9,9 @@ label {
 .input-name {
 	font-weight: bold;
 }
+.input-rank {
+	font-weight: bold;
+}
 
 .controls {
 	margin-left: 10%;
@@ -63,4 +66,19 @@ label {
 
 .avatar-container {
 	vertical-align: top;
+}
+
+.rank{
+	float:left;
+	border: 1px hidden;
+	padding-left: 5px;
+	padding-right: 5px;
+	border-radius: 5px;
+	background-color: #f8c217;
+	color:#ffffff;
+	font-size:10px;
+}
+
+.blank{
+	float:left;
 }

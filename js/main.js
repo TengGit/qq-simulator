@@ -6,7 +6,9 @@ $(document).ready(function() {
 	var defaultNickname = "Me";
 	var defaultAvatar = "img/avatar/default.jpg";
 	var defaultBubble = "none";
-	
+	var defaultRank = "well1";
+	var defaulrBubbleSrc = "img/bubble/iphone10.png";
+
 	var formData = function(form) {
 		var result = {};
 		var el = form.elements;
@@ -56,7 +58,15 @@ $(document).ready(function() {
 		this._nick = data.nickname;
 		this._img = data.avatar.length ? URL.createObjectURL(data.avatar[0]) : defaultAvatar;
 		this._msgNum = 0;
+
 	}
+
+	var Rank = function(data){
+        this._rank = data.rank;
+    }
+    var Bubble = function(data){
+	    this._scr = data.bubblesrc;
+    }
 	
 	Role.prototype.finalize = function() {
 		if (this._msgNum === 0 && this._img !== "default.jpg") URL.revokeObjectURL(this._img);
@@ -79,6 +89,10 @@ $(document).ready(function() {
 				.append(New("div")
 					.addClass("nickname")
 					.text(this._nick)
+					.append(New("span")
+						.addClass("rank")
+						.text(this._rank)
+					)
 				)
 				.append(New("div")
 					.addClass("message")
@@ -88,7 +102,9 @@ $(document).ready(function() {
 	}
 	
 	var roleData = {};
-	
+	var rankData = {};
+    var bubbleData = {};
+
 	var addRole = function(nickname, data) {
 		var newRole = new Role(data);
 		var encoded = encodeURIComponent(nickname);
@@ -99,7 +115,42 @@ $(document).ready(function() {
 		}
 		roleData[encoded] = newRole;
 	}
-	
+
+	var addRank = function(rank,data){
+		var newRank = new Rank(data);
+		var encoded = encodeURIComponent(rank);
+		if(rankData[encoded]){
+			rankData[encoded].finalize();
+		}else{
+			$("#rank").append(New("option").val(encoded).text(rank));
+		}
+		rankData[encoded] = newRank;
+	}
+    var addBubble = function(bubble,data){
+        var newBubble = new Bubble(data);
+        var encoded = encodeURIComponent(bubble);
+        if(bubbleData[encoded]){
+            bubbleData[encoded].finalize();
+        }else{
+            $("#select_bubble").append(New("option")
+                .append(New("img").val(encoded).src="bubble")
+            );
+        }
+        rankData[encoded] = newRank;
+    }
+
+	var removeRank = function(rank) {
+		if (rankData[rank]) {
+			if (rank === defaultRank) {
+				alert("You can't delete default rank!");
+				return;
+			}
+			rankData[rank].finalize();
+			$("#rank").children('[value="' + encodeURIComponent(rank) + '"]').remove();
+			delete rankData[rank];
+		}
+	}
+
 	var removeRole = function(nickname) {
 		if (roleData[nickname]) {
 			if (nickname === defaultKey) {
@@ -134,11 +185,20 @@ $(document).ready(function() {
 		e.preventDefault();
 		addRole($("#nickname").val(), formData($("#style").get(0)));
 	})
-	
+
+	$("#rank_form").on("submit", function(e) {
+		e.preventDefault();
+		addRank($("#rank").val(), formData($("#rank_forme").get(0)));
+	})
+
 	$("#remove-role").on("click", function() {
 		removeRole($("#role").val());
 	});
-	
+
+	$("#remove-rank").on("click", function() {
+		removeRank($("#rank").val());
+	});
+
 	$("#send-message").on("submit", function(e) {
 		e.preventDefault();
 		sendMessage($("#role").val(), $("#message").val());
@@ -149,6 +209,27 @@ $(document).ready(function() {
 	addRole(defaultKey, {
 		avatar: [],
 		bubble: defaultBubble,
-		nickname: defaultNickname
+		nickname: defaultNickname,
+		rank: defaultRank,
+        bubblesrc: defaulrBubbleSrc
+	});
+	addRank(defaultRank, {
+		avatar: [],
+		bubble: defaultBubble,
+		nickname: defaultNickname,
+		rank: defaultRank,
+        bubblesrc: defaulrBubbleSrc
+	});
+	$(":radio").click(function(){
+		var if_bubble = $('input:radio[name="bubble"]:checked').val();
+		if(if_bubble === 'other'){
+			$("#select_label_bubble").show();
+			$("#select_bubble").show();
+			$("#bubble_form").show();
+		}else{
+			$("#select_label_bubble").hide();
+			$("#select_bubble").hide();
+			$("#bubble_form").hide();
+		}
 	});
 });

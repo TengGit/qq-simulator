@@ -19,23 +19,45 @@
 	  <select name="role" id="role">
 	  </select>
 	  <input type="button" name="remove-role" id="remove-role" value="Remove this role" class="button">
-	  <input type="text" name="text" id="message" size="20">
+		<label for="rank" class="input-rank">Select rank:</label>
+		<select name="rank" id="rank"></select>
+		<input type="button" name="remove-rank" id="remove-rank" value="Remove this rank" class="button">
+		<label for="select_bubble" class="input-name" style="display: none" id="select_label_bubble">Select bubble:</label>
+		<select name="bubble" id="select_bubble" style="display: none"></select>
+		<input type="button" name="remove-bubble" id="remove-bubble" value="Remove this bubble" class="button" style="display: none">
+		<input type="text" name="text" id="message" size="20">
 	  <input type="submit" name="send" id="send" value="Send" class="button">
 	</form>
     <form id="style" class="control-group">
 	  <label for="avatar" class="input-name">Avatar: </label>
 	  <input type="file" name="avatar" id="avatar" accept="image/*" style="display: none;">
 	  <input type="button" name="avatar-select-button" id="avatar-select-button" class="button" value="Select avatar">
-	  <img id="avatar-preview" width="32" height="32" class="avatar-image">
+	  <img id="avatar-preview" width="32" height="32" class="avatar-image" >
 	  <br>
-	  <label class="input-name">Bubble: </label>
+	  <label class="input-name">if Bubble: </label>
 	  <input type="radio" name="bubble" value="none" id="bubble-none" checked><label for="bubble-none">None</label>
 	  <input type="radio" name="bubble" value="custom" id="bubble-custom"><label for="bubble-custom">Custom</label>
+		<input type="radio" name="bubble" value="other" id="bubble-other"><label for="bubble-other">Other</label>
 	  <br>
 	  <label for="nickname" class="input-name">Nickname: </label>
 	  <input type="text" name="nickname" id="nickname">
 	  <input type="submit" name="add-role" id="add-role" value="Add this role" class="button">
-    </form>
+	</form>
+	  <form id="bubble_form" class="control-group" style="display: none">
+		  <label for="bubble_image" class="input-name">Bubble: </label>
+		  <input type="file" name="avatar" id="bubble_image" accept="image/*" style="display: none;">
+		  <input type="button" name="avatar-select-button" id="bubble-select-button" class="button" value="Select avatar">
+		  <img id="bubble-preview" width="32" height="32" class="avatar-image" >
+		  <input type="submit" name="add-bubble" id="add-bubble" value="Add this bubble" class="button">
+	  </form>
+	  <form id="rank_form" class="control-group">
+		  <label for="rank" class="input-rank">Rank: </label>
+		  <input type="text" name="rank" id="set-rank">
+		  <input type="submit" name="add-rank" id="add-rank" value="Add this rank" class="button">
+	  </form>
+
+
+
   </div>
 </div>
 </body>
