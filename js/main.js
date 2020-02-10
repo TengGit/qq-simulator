@@ -4,6 +4,8 @@ $(document).ready(function() {
 	var imgSize = 32;
 	var defaultKey = "Default";
 	var defaultNickname = "Me";
+	var defaultAvatar = "img/avatar/default.jpg";
+	var defaultBubble = "none";
 	
 	var formData = function(form) {
 		var result = {};
@@ -52,7 +54,7 @@ $(document).ready(function() {
 	
 	var Role = function(data) {
 		this._nick = data.nickname;
-		this._img = data.avatar.length ? URL.createObjectURL(data.avatar[0]) : "default.jpg";
+		this._img = data.avatar.length ? URL.createObjectURL(data.avatar[0]) : defaultAvatar;
 		this._msgNum = 0;
 	}
 	
@@ -105,7 +107,7 @@ $(document).ready(function() {
 				return;
 			}
 			roleData[nickname].finalize();
-			$("#role").children('[name="'+encodeURIComponent(nickname)+'"]').remove();
+			$("#role").children('[value="' + encodeURIComponent(nickname) + '"]').remove();
 			delete roleData[nickname];
 		}
 	}
@@ -120,7 +122,7 @@ $(document).ready(function() {
 		if (files.length) {
 			preview.src = window.URL.createObjectURL(files.item(0));
 		} else {
-			preview.src = "default.jpg";
+			preview.src = defaultAvatar;
 		}
 	});
 	
@@ -138,9 +140,11 @@ $(document).ready(function() {
 		sendMessage($("#role").val(), $("#message").val());
 	});
 	
+	$("#avatar-preview").attr("src", defaultAvatar);
+	
 	addRole(defaultKey, {
 		avatar: [],
-		bubble: "none",
+		bubble: defaultBubble,
 		nickname: defaultNickname
 	});
 });
