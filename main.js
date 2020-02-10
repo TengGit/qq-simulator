@@ -124,7 +124,8 @@ $(document).ready(function() {
 		}
 	});
 	
-	$("#add-role").on("click", function() {
+	$("#style").on("submit", function(e) {
+		e.preventDefault();
 		addRole($("#nickname").val(), formData($("#style").get(0)));
 	})
 	
@@ -132,7 +133,8 @@ $(document).ready(function() {
 		removeRole($("#role").val());
 	});
 	
-	$("#send").on("click", function() {
+	$("#send-message").on("submit", function(e) {
+		e.preventDefault();
 		sendMessage($("#role").val(), $("#message").val());
 	});
 	
