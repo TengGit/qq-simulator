@@ -5,6 +5,7 @@ $(document).ready(function() {
 	var defaultKey = "Default";
 	var defaultNickname = "Me";
 	var defaultAvatar = "img/avatar/default.jpg";
+	var defaultBubbleSrc = "img/bubble/iphone10.png";
 	var defaultBubble = "none";
 
 	var formData = function(form) {

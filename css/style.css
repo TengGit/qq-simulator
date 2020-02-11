@@ -152,3 +152,7 @@ label {
 	background: #f2ffeb;
 
 }
+.bubble-image{
+	border: none;
+	vertical-align: middle;
+}
