@@ -9,9 +9,6 @@ label {
 .input-name {
 	font-weight: bold;
 }
-.input-rank {
-	font-weight: bold;
-}
 
 .controls {
 	margin-left: 10%;
@@ -68,17 +65,53 @@ label {
 	vertical-align: top;
 }
 
-.rank{
-	float:left;
+.rank {
 	border: 1px hidden;
 	padding-left: 5px;
 	padding-right: 5px;
 	border-radius: 5px;
-	background-color: #f8c217;
-	color:#ffffff;
-	font-size:10px;
+	font-size: 10px;
+	vertical-align: middle;
 }
 
 .blank{
 	float:left;
+}
+
+.rank-host-yellow {
+	background-color: #f8c217;
+	color: white;
+}
+
+.rank-admin-green {
+	background-color: #6ADAA4;
+	color: white;
+}
+
+.rank-title-red {
+	background-color: #FF9A8C;
+	color: white;
+}
+
+.rank-special-purple {
+	background-color: #B596EF;
+	color: white;
+}
+
+.rank-common-blue {
+	background-color: #8BBDFE;
+	color: white;
+}
+
+.frame-container {
+	border: 1px solid black;
+	padding: 0em 0.5em 0em;
+	margin-top: 0.7em;
+}
+
+.frame-title {
+	width: fit-content;
+	margin-top: -0.6em;
+	background: white;
+	padding: 0px 5px;
 }

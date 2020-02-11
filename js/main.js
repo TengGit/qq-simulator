@@ -186,10 +186,6 @@ $(document).ready(function() {
 		addRole($("#nickname").val(), formData($("#style").get(0)));
 	})
 
-	$("#rank_form").on("submit", function(e) {
-		e.preventDefault();
-		addRank($("#rank").val(), formData($("#rank_form").get(0)));
-	});
 	$("#bubble_form").on("submit", function(e) {
 		e.preventDefault();
 		addBubble($("#select_bubble").val(), formData($("#bubble_form").get(0)));
