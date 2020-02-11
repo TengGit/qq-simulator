@@ -91,13 +91,13 @@ $(document).ready(function() {
 			)
 			.append(New("td")
 				.append(New("div")
-					.addClass("nickname")
-					.text(this._nick)
-
 					.append(New("span")
 						.addClass($(':radio[name="rank-style"]:checked').val())
-						.addClass("ranked")
 						.text($('#rank_rank').val())
+					)
+					.append(New("span")
+						.addClass("nickname")
+						.text(this._nick)
 					)
 				)
 				.append(New("div")
@@ -170,11 +170,6 @@ $(document).ready(function() {
 		e.preventDefault();
 		addRole($("#nickname").val(), formData($("#style").get(0)));
 	})
-
-	$("#bubble_form").on("submit", function(e) {
-		e.preventDefault();
-		addBubble($("#select_bubble").val(), formData($("#bubble_form").get(0)));
-	});
 
 	$("#remove-role").on("click", function() {
 		removeRole($("#role").val());

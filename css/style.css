@@ -72,6 +72,7 @@ label {
 	border-radius: 5px;
 	font-size: 10px;
 	vertical-align: middle;
+	margin-left: 3px;
 }
 
 .blank{
@@ -82,29 +83,23 @@ label {
 	background-color: #f8c217;
 	color: white;
 }
-.ranked{
-	float:left;
-}
-.rank-admin-green {
 
+.rank-admin-green {
 	background-color: #6ADAA4;
 	color: white;
 }
 
 .rank-title-red {
-
 	background-color: #FF9A8C;
 	color: white;
 }
 
 .rank-special-purple {
-
 	background-color: #B596EF;
 	color: white;
 }
 
 .rank-common-blue {
-
 	background-color: #8BBDFE;
 	color: white;
 }
