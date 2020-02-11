@@ -57,7 +57,7 @@
 			  <option value="rank-red 翰林学士">翰林学士</option>
 			  <option value="rank-red 相声演员">相声演员</option>
 			  <option value="rank-red 江湖传说">江湖传说</option>
-			  <option value="rank-purple custom">专属称号</option>
+			  <option value="rank-purple 王霸之气">专属称号</option>
           </select>
 		<input type="text" name="rank-text" id="rank-text" maxlength="6" size="12">
 		<input type="radio" name="rank-style" value="rank" id="rank-none" checked><label for="rank-none">None</label>
@@ -74,17 +74,17 @@
         <input type="text" name="rank" id="rank-text" size="12" maxlength="6" style="display: none;">
 		<br>
         <label for="nickname" class="input-name">Nickname: </label>
-        <input type="text" name="nickname" id="nickname">
+        <input type="text" name="nickname" id="nickname" value="Me">
 		<br>
-		<input type="text" name="role-name">
-        <input type="submit" name="add-role" id="add-role" value="Save as preset" class="button">
-      </form>
-      <form id="bubble_form" class="control-group" style="display: none">
+		<input type="text" name="role-name" id="role-name" value="Default">
+        <input type="submit" name="add-role" id="add-role" value="Save/update preset" class="button">
+		<br>
+      <div id="bubble_form" class="control-group" style="display: none">
         <label for="bubble_image" class="input-name">Bubble: </label>
         <input type="file" name="bubble-image" id="bubble_image" accept="image/*" style="display: none;">
         <input type="button" name="bubble-select-button" id="bubble-select-button" class="button" value="Select bubble">
-    </form>
-        <form id="bubble_form2" class="control-group" style="display: none">
+    </div>
+		<div id="bubble_form2" class="control-group" style="display: none">
             <label for="bubble_image" class="input-name">Custom Bubble: </label>
             <input type="radio" name="custom_bubble_style" value="CB1" id="CB1" checked>
             <label for="CB1" class="CB CB1">样式1</label>
@@ -94,7 +94,8 @@
             <label for="CB1" class="CB CB3">样式3</label>
             <input type="radio" name="custom_bubble_style" value="CB4" id="CB4">
             <label for="CB1" class="CB CB4">样式4</label>
-        </form>
+		</div>
+      </form>
     </div>
   </div>
 </div>

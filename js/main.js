@@ -6,7 +6,6 @@ $(document).ready(function() {
 	var defaultNickname = "Me";
 	var defaultAvatar = "img/avatar/default.jpg";
 	var defaultBubble = "none";
-	var defaulrBubbleSrc = "img/bubble/iphone10.png";
 
 	var formData = function(form) {
 		var result = {};
@@ -38,8 +37,9 @@ $(document).ready(function() {
 					result[node.name] = node.value;
 					break;
 				}
+				break;
 			case "SELECT":
-				/* TODO: Implement later */
+				result[node.name] = node[node.selectedIndex].value;
 				break;
 			default:
 				result[node.name] = node.value;
@@ -49,22 +49,65 @@ $(document).ready(function() {
 		return result;
 	}
 	
+	var fillForm = function(form, data) {
+		var el = form.elements;
+		for (var idx = 0; idx < el.length; idx++) {
+			var node = el[idx];
+			var val = data[node.name];
+			if (val === undefined) continue;
+			switch (node.nodeName) {
+			case "INPUT":
+				switch (node.type) {
+				case "radio":
+					if (node.value === val) {
+						node.click();
+					}
+					break;
+				case "checkbox":
+					// FIXME: implement later
+					if (val.indexOf(node.value)) {
+						// check node
+					} else {
+						// uncheck node
+					}
+					break;
+				case "button":
+				case "reset":
+				case "submit":
+				case "file":
+					break;
+				default:
+					node.value = val;
+					break;
+				}
+				break;
+			case "SELECT":
+				for (var i = 0; i < node.options.length; i++) {
+					if (node.options[i].value === val) {
+						node.selectedIndex = i;
+						break;
+					}
+				}
+				break;
+			default:
+				node.value = val;
+				break;
+			}
+		}
+	}
+	
 	var New = function(name) {
 		return $(document.createElement(name));
 	}
 	
-	var Role = function(data) {
-		this._nick = data.nickname;
-		this._img = data.avatar.length ? URL.createObjectURL(data.avatar[0]) : defaultAvatar;
-	}
-	
-	Role.prototype.createMessage = function(message) {
+	var createMessage = function(style, message) {
 		var bubblestyle = "";
-		if($(':radio[name="bubble"]:checked').val() ==='custom'){
-			bubblestyle =$(':radio[name="custom_bubble_style"]:checked').val()
+		var rankText = "";
+		if (style["bubble"] === 'custom') {
+			bubblestyle = style["custom_bubble_style"];
 		}
-		if($(':radio[name="rank-style"]:checked').val() ==='rank'){
-			$("#rank_rank").val("");
+		if (style["rank-style"] !== 'rank') {
+			rankText = style["rank-text"];
 		}
 		return New("tr")
 			.append(New("td")
@@ -73,20 +116,22 @@ $(document).ready(function() {
 					.attr({
 						"width": imgSize,
 						"height": imgSize,
-						"src": this._img
+						"src": $("#avatar-preview").attr("src")
 					})
 				)
 				.addClass("avatar-container")
 			)
 			.append(New("td")
 				.append(New("div")
-					.append(New("span")
-						.addClass($(':radio[name="rank-style"]:checked').val())
-						.text($('#rank_rank').val())
+					.append(rankText.length ?
+						New("span")
+							.addClass(style["rank-style"])
+							.text(rankText) :
+						null
 					)
 					.append(New("span")
 						.addClass("nickname")
-						.text(this._nick)
+						.text(style["nickname"])
 					)
 				)
 				.append(New("div")
@@ -98,28 +143,30 @@ $(document).ready(function() {
 	
 	var roleData = {};
 
-	var addRole = function(nickname, data) {
-		var newRole = new Role(data);
-		var encoded = encodeURIComponent(nickname);
+	var addRole = function(presetName, data) {
+		var encoded = encodeURIComponent(presetName);
 		if (!roleData[encoded]) {
-			$("#role").append(New("option").val(encoded).text(nickname));
+			var roleSelect = $("#role");
+			roleSelect.append(New("option").val(encoded).text(presetName)).get(0).selectedIndex = roleSelect.get(0).options.length - 1;
 		}
-		roleData[encoded] = newRole;
+		data.avatar = data.avatar.length ? URL.createObjectURL(data.avatar[0]) : defaultAvatar;
+		roleData[encoded] = data;
 	}
 
-	var removeRole = function(nickname) {
-		if (roleData[nickname]) {
-			if (nickname === defaultKey) {
-				alert("You can't delete default role!");
+	var removeRole = function(encodedName) {
+		var presetName = decodeURIComponent(encodedName);
+		if (roleData[encodedName]) {
+			if (presetName === defaultKey) {
+				alert("You can't delete default preset!");
 				return;
 			}
-			$("#role").children('[value="' + encodeURIComponent(nickname) + '"]').remove();
-			delete roleData[nickname];
+			$("#role").children('[value="' + encodedName + '"]').remove();
+			delete roleData[presetName];
 		}
 	}
 	
-	var sendMessage = function(nickname, message) {
-		$("#conversation").append(roleData[nickname].createMessage(message));
+	var sendMessage = function(message) {
+		$("#conversation").append(createMessage(formData($("#style").get(0)), message));
 	}
 	
 	$("#avatar-select-button").on("click", function() {
@@ -144,7 +191,12 @@ $(document).ready(function() {
 	
 	$("#style").on("submit", function(e) {
 		e.preventDefault();
-		addRole($("#nickname").val(), formData($("#style").get(0)));
+		addRole($("#role-name").val(), formData($("#style").get(0)));
+	});
+	
+	$("#role").on("change", function() {
+		fillForm($("#style").get(0), roleData[this.value]);
+		$("#avatar-preview").attr("src", roleData[this.value]["avatar"]);
 	});
 
 	$("#remove-role").on("click", function() {
@@ -153,7 +205,7 @@ $(document).ready(function() {
 
 	$("#send-message").on("submit", function(e) {
 		e.preventDefault();
-		sendMessage($("#role").val(), $("#message").val());
+		sendMessage($("#message").val());
 	});
 	
 	$("#avatar-preview").attr("src", defaultAvatar);
@@ -162,7 +214,10 @@ $(document).ready(function() {
 		avatar: [],
 		bubble: defaultBubble,
 		nickname: defaultNickname,
-        bubblesrc: defaulrBubbleSrc
+		rank: "rank-none ",
+		"rank-text": "",
+		"rank-style": "rank",
+		"role-name": defaultKey
 	});
 
 	$(":radio").click(function(){
