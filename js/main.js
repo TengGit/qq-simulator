@@ -56,17 +56,6 @@ $(document).ready(function() {
 	var Role = function(data) {
 		this._nick = data.nickname;
 		this._img = data.avatar.length ? URL.createObjectURL(data.avatar[0]) : defaultAvatar;
-		this._msgNum = 0;
-
-	}
-
-
-    var Bubble = function(data){
-	    this._scr = data.bubblesrc;
-    }
-	
-	Role.prototype.finalize = function() {
-		if (this._msgNum === 0 && this._img !== "default.jpg") URL.revokeObjectURL(this._img);
 	}
 	
 	Role.prototype.createMessage = function(message) {
@@ -109,32 +98,14 @@ $(document).ready(function() {
 	
 	var roleData = {};
 
-    var bubbleData = {};
-
 	var addRole = function(nickname, data) {
 		var newRole = new Role(data);
 		var encoded = encodeURIComponent(nickname);
-		if (roleData[encoded]) {
-			roleData[encoded].finalize();
-		} else {
+		if (!roleData[encoded]) {
 			$("#role").append(New("option").val(encoded).text(nickname));
 		}
 		roleData[encoded] = newRole;
 	}
-
-
-    var addBubble = function(bubble,data){
-        var newBubble = new Bubble(data);
-        var encoded = encodeURIComponent(bubble);
-        if(bubbleData[encoded]){
-            bubbleData[encoded].finalize();
-        }else{
-            $("#select_bubble").append(New("option")
-                .append(New("img").val(encoded).src="bubble")
-            );
-        }
-		bubbleData[encoded] = newBubble;
-    }
 
 	var removeRole = function(nickname) {
 		if (roleData[nickname]) {
@@ -142,7 +113,6 @@ $(document).ready(function() {
 				alert("You can't delete default role!");
 				return;
 			}
-			roleData[nickname].finalize();
 			$("#role").children('[value="' + encodeURIComponent(nickname) + '"]').remove();
 			delete roleData[nickname];
 		}
@@ -166,10 +136,16 @@ $(document).ready(function() {
 		}
 	});
 	
+	$("#rank-preset").on("change", function() {
+		var li = this.value.split(" ");
+		$("#" + li[0]).click();
+		$("#rank-text").val(li[1]);
+	});
+	
 	$("#style").on("submit", function(e) {
 		e.preventDefault();
 		addRole($("#nickname").val(), formData($("#style").get(0)));
-	})
+	});
 
 	$("#remove-role").on("click", function() {
 		removeRole($("#role").val());

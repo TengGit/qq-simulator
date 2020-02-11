@@ -20,25 +20,6 @@
         <label for="role" class="input-name">Select from preset: </label>
         <select name="role" id="role"></select>
         <input type="button" name="remove-role" id="remove-role" value="Remove preset" class="button">
-        <label for="rank_rank" class="input-name">Select rank:</label>
-          <select name="rank" id="rank_rank">
-              <option value="" selected></option>
-                  <option value="潜水">潜水</option>
-                  <option value="冒泡">冒泡</option>
-                  <option value="吐槽">吐槽</option>
-                  <option value="活跃">活跃</option>
-                  <option value="话痨">话痨</option>
-                  <option value="传说">传说</option>
-                  <option value="群主">群主</option>
-                  <option value="管理员">管理员</option>
-                  <option value="宣传委员">宣传委员</option>
-                  <option value="种草达人">种草达人</option>
-                  <option value="三好学生">三好学生</option>
-                  <option value="翰林学士">翰林学士</option>
-                  <option value="相声演员">相声演员</option>
-                  <option value="江湖传说">江湖传说</option>
-          </select>
-
         <label for="select_bubble" class="input-name" style="display: none" id="select_label_bubble">Select bubble:</label>
         <select name="bubble" id="select_bubble" style="display: none"></select>
         <input type="button" name="remove-bubble" id="remove-bubble" value="Remove this bubble" class="button" style="display: none">
@@ -60,6 +41,25 @@
         <input type="radio" name="bubble" value="other" id="bubble-other"><label for="bubble-other">Other</label>
         <br>
         <label class="input-name">Rank: </label>
+          <select name="rank" id="rank-preset">
+              <option value="rank-none " selected></option>
+			  <option value="rank-blue 潜水">潜水</option>
+			  <option value="rank-blue 冒泡">冒泡</option>
+			  <option value="rank-blue 吐槽">吐槽</option>
+			  <option value="rank-blue 活跃">活跃</option>
+			  <option value="rank-blue 话痨">话痨</option>
+			  <option value="rank-blue 传说">传说</option>
+			  <option value="rank-yellow 群主">群主</option>
+			  <option value="rank-green 管理员">管理员</option>
+			  <option value="rank-red 宣传委员">宣传委员</option>
+			  <option value="rank-blue 种草达人">种草达人</option>
+			  <option value="rank-blue 三好学生">三好学生</option>
+			  <option value="rank-red 翰林学士">翰林学士</option>
+			  <option value="rank-red 相声演员">相声演员</option>
+			  <option value="rank-red 江湖传说">江湖传说</option>
+			  <option value="rank-purple custom">专属称号</option>
+          </select>
+		<input type="text" name="rank-text" id="rank-text" maxlength="6" size="12">
 		<input type="radio" name="rank-style" value="rank" id="rank-none" checked><label for="rank-none">None</label>
 		<input type="radio" name="rank-style" value="rank rank-host-yellow" id="rank-yellow">
 		<label for="rank-yellow" class="rank rank-host-yellow">群主黄</label>
@@ -76,6 +76,7 @@
         <label for="nickname" class="input-name">Nickname: </label>
         <input type="text" name="nickname" id="nickname">
 		<br>
+		<input type="text" name="role-name">
         <input type="submit" name="add-role" id="add-role" value="Save as preset" class="button">
       </form>
       <form id="bubble_form" class="control-group" style="display: none">
