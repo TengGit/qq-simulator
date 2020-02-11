@@ -82,23 +82,29 @@ label {
 	background-color: #f8c217;
 	color: white;
 }
-
+.ranked{
+	float:left;
+}
 .rank-admin-green {
+
 	background-color: #6ADAA4;
 	color: white;
 }
 
 .rank-title-red {
+
 	background-color: #FF9A8C;
 	color: white;
 }
 
 .rank-special-purple {
+
 	background-color: #B596EF;
 	color: white;
 }
 
 .rank-common-blue {
+
 	background-color: #8BBDFE;
 	color: white;
 }
@@ -114,4 +120,35 @@ label {
 	margin-top: -0.6em;
 	background: white;
 	padding: 0px 5px;
+}
+
+.CB1{
+	  border:3px double;
+	  padding: 3px 10px;
+	  border-color: #B596EF #6ADAA4;
+	  border-radius: 6px 20px;
+	  background: #f2ffeb;
+
+  }
+.CB2{
+	padding: 3px 10px;
+	border: 3px groove #6ADAA4;
+	border-radius: 10px;
+	background: #f2ffeb;
+
+}
+.CB3{
+	padding: 3px 10px;
+	border: 3px ridge;
+	border-color: aqua #8BBDFE #FF9A8C #6ADAA4;
+	border-radius: 10px;
+	background:rgb(166, 216, 242);
+
+}
+.CB4{
+	padding: 3px 10px;
+	border: 3px solid #66ccff;
+	border-radius: 10px 10px 5px 5px;
+	background: #f2ffeb;
+
 }

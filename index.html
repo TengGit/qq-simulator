@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+
 </head>
 <body>
 <div id="container">
@@ -19,9 +20,25 @@
         <label for="role" class="input-name">Select from preset: </label>
         <select name="role" id="role"></select>
         <input type="button" name="remove-role" id="remove-role" value="Remove preset" class="button">
-        <label for="rank" class="input-name">Select rank:</label>
-        <select name="rank" id="rank"></select>
-        <input type="button" name="remove-rank" id="remove-rank" value="Remove this rank" class="button">
+        <label for="rank_rank" class="input-name">Select rank:</label>
+          <select name="rank" id="rank_rank">
+              <option value="" selected></option>
+                  <option value="潜水">潜水</option>
+                  <option value="冒泡">冒泡</option>
+                  <option value="吐槽">吐槽</option>
+                  <option value="活跃">活跃</option>
+                  <option value="话痨">话痨</option>
+                  <option value="传说">传说</option>
+                  <option value="群主">群主</option>
+                  <option value="管理员">管理员</option>
+                  <option value="宣传委员">宣传委员</option>
+                  <option value="种草达人">种草达人</option>
+                  <option value="三好学生">三好学生</option>
+                  <option value="翰林学士">翰林学士</option>
+                  <option value="相声演员">相声演员</option>
+                  <option value="江湖传说">江湖传说</option>
+          </select>
+
         <label for="select_bubble" class="input-name" style="display: none" id="select_label_bubble">Select bubble:</label>
         <select name="bubble" id="select_bubble" style="display: none"></select>
         <input type="button" name="remove-bubble" id="remove-bubble" value="Remove this bubble" class="button" style="display: none">
@@ -43,16 +60,16 @@
         <input type="radio" name="bubble" value="other" id="bubble-other"><label for="bubble-other">Other</label>
         <br>
         <label class="input-name">Rank: </label>
-		<input type="radio" name="rank-style" value="none" id="rank-none" checked></label for="rank-none">None</label>
-		<input type="radio" name="rank-style" value="yellow" id="rank-yellow">
+		<input type="radio" name="rank-style" value="rank" id="rank-none" checked><label for="rank-none">None</label>
+		<input type="radio" name="rank-style" value="rank rank-host-yellow" id="rank-yellow">
 		<label for="rank-yellow" class="rank rank-host-yellow">群主黄</label>
-		<input type="radio" name="rank-style" value="green" id="rank-green">
+		<input type="radio" name="rank-style" value="rank rank-admin-green" id="rank-green">
 		<label for="rank-green" class="rank rank-admin-green">管理绿</label>
-		<input type="radio" name="rank-style" value="red" id="rank-red">
+		<input type="radio" name="rank-style" value="rank rank-title-red" id="rank-red">
 		<label for="rank-red" class="rank rank-title-red">称号红</label>
-		<input type="radio" name="rank-style" value="none" id="rank-purple">
+		<input type="radio" name="rank-style" value="rank rank-special-purple" id="rank-purple">
 		<label for="rank-purple" class="rank rank-special-purple">专属紫</label>
-		<input type="radio" name="rank-style" value="none" id="rank-blue">
+		<input type="radio" name="rank-style" value="rank rank-common-blue" id="rank-blue">
 		<label for="rank-blue" class="rank rank-common-blue">普通蓝</label>
         <input type="text" name="rank" id="rank-text" size="12" maxlength="6" style="display: none;">
 		<br>
@@ -66,7 +83,18 @@
         <input type="file" name="bubble-image" id="bubble_image" accept="image/*" style="display: none;">
         <input type="button" name="bubble-select-button" id="bubble-select-button" class="button" value="Select bubble">
         <input type="submit" name="add-bubble" id="add-bubble" value="Add this bubble" class="button">
-      </form>
+    </form>
+        <form id="bubble_form2" class="control-group" style="display: none">
+            <label for="bubble_image" class="input-name">Custom Bubble: </label>
+            <input type="radio" name="custom_bubble_style" value="CB1" id="CB1" checked>
+            <label for="CB1" class="CB CB1">样式1</label>
+            <input type="radio" name="custom_bubble_style" value="CB2" id="CB2">
+            <label for="CB1" class="CB CB2">样式2</label>
+            <input type="radio" name="custom_bubble_style" value="CB3" id="CB3">
+            <label for="CB1" class="CB CB3">样式3</label>
+            <input type="radio" name="custom_bubble_style" value="CB4" id="CB4">
+            <label for="CB1" class="CB CB4">样式4</label>
+        </form>
     </div>
   </div>
 </div>

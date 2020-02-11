@@ -6,7 +6,6 @@ $(document).ready(function() {
 	var defaultNickname = "Me";
 	var defaultAvatar = "img/avatar/default.jpg";
 	var defaultBubble = "none";
-	var defaultRank = "well1";
 	var defaulrBubbleSrc = "img/bubble/iphone10.png";
 
 	var formData = function(form) {
@@ -61,9 +60,7 @@ $(document).ready(function() {
 
 	}
 
-	var Rank = function(data){
-        this._rank = data.rank;
-    }
+
     var Bubble = function(data){
 	    this._scr = data.bubblesrc;
     }
@@ -73,6 +70,13 @@ $(document).ready(function() {
 	}
 	
 	Role.prototype.createMessage = function(message) {
+		var bubblestyle = "";
+		if($(':radio[name="bubble"]:checked').val() ==='custom'){
+			bubblestyle =$(':radio[name="custom_bubble_style"]:checked').val()
+		}
+		if($(':radio[name="rank-style"]:checked').val() ==='rank'){
+			$("#rank_rank").val("");
+		}
 		return New("tr")
 			.append(New("td")
 				.append(New("img")
@@ -89,20 +93,22 @@ $(document).ready(function() {
 				.append(New("div")
 					.addClass("nickname")
 					.text(this._nick)
+
 					.append(New("span")
-						.addClass("rank")
-						.text(this._rank)
+						.addClass($(':radio[name="rank-style"]:checked').val())
+						.addClass("ranked")
+						.text($('#rank_rank').val())
 					)
 				)
 				.append(New("div")
-					.addClass("message")
+					.addClass("message" +" "+ bubblestyle)
 					.text(message)
 				)
 			);
 	}
 	
 	var roleData = {};
-	var rankData = {};
+
     var bubbleData = {};
 
 	var addRole = function(nickname, data) {
@@ -116,16 +122,7 @@ $(document).ready(function() {
 		roleData[encoded] = newRole;
 	}
 
-	var addRank = function(rank,data){
-		var newRank = new Rank(data);
-		var encoded = encodeURIComponent(rank);
-		if(rankData[encoded]){
-			rankData[encoded].finalize();
-		}else{
-			$("#rank").append(New("option").val(encoded).text(rank));
-		}
-		rankData[encoded] = newRank;
-	}
+
     var addBubble = function(bubble,data){
         var newBubble = new Bubble(data);
         var encoded = encodeURIComponent(bubble);
@@ -138,18 +135,6 @@ $(document).ready(function() {
         }
 		bubbleData[encoded] = newBubble;
     }
-
-	var removeRank = function(rank) {
-		if (rankData[rank]) {
-			if (rank === defaultRank) {
-				alert("You can't delete default rank!");
-				return;
-			}
-			rankData[rank].finalize();
-			$("#rank").children('[value="' + encodeURIComponent(rank) + '"]').remove();
-			delete rankData[rank];
-		}
-	}
 
 	var removeRole = function(nickname) {
 		if (roleData[nickname]) {
@@ -195,10 +180,6 @@ $(document).ready(function() {
 		removeRole($("#role").val());
 	});
 
-	$("#remove-rank").on("click", function() {
-		removeRank($("#rank").val());
-	});
-
 	$("#send-message").on("submit", function(e) {
 		e.preventDefault();
 		sendMessage($("#role").val(), $("#message").val());
@@ -210,28 +191,20 @@ $(document).ready(function() {
 		avatar: [],
 		bubble: defaultBubble,
 		nickname: defaultNickname,
-		rank: defaultRank,
         bubblesrc: defaulrBubbleSrc
 	});
-	addRank(defaultRank, {
-		avatar: [],
-		bubble: defaultBubble,
-		nickname: defaultNickname,
-		rank: defaultRank,
-        bubblesrc: defaulrBubbleSrc
-	});
+
 	$(":radio").click(function(){
 		var if_bubble = $('input:radio[name="bubble"]:checked').val();
 		if(if_bubble === 'other'){
-			$("#select_label_bubble").show();
-			$("#select_bubble").show();
 			$("#bubble_form").show();
-			$("#remove-bubble").show();
-		}else{
-			$("#select_label_bubble").hide();
-			$("#select_bubble").hide();
+			$("#bubble_form2").hide();
+		}else if(if_bubble === 'custom'){
+			$("#bubble_form2").show();
 			$("#bubble_form").hide();
-			$("#remove-bubble").hide();
+		}else{
+			$("#bubble_form2").hide();
+			$("#bubble_form").hide();
 		}
 	});
 });
