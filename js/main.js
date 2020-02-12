@@ -102,18 +102,25 @@ $(document).ready(function() {
 	}
 	
 	var createMessage = function(style, message) {
-		var bubblestyle = "";
 		var rankText = "";
-		var bubblleimage = "";
+		
+		var messageDiv = New("div")
+			.addClass("message")
+			.text(message);
+		
 		if (style["bubble"] === 'custom') {
-			bubblestyle = style["custom_bubble_style"];
-		}else if(style["bubble"] === 'other'){
-			bubblestyle = "bubble_message";
-			bubblleimage = $("#bubble-preview").attr("src");
+			messageDiv.addClass(style["custom_bubble_style"]);
+		} else if (style["bubble"] === 'other') {
+			messageDiv.css({
+				"border-image": "url(\"" + $("#bubble-preview").attr("src") + "\") 8 stretch",
+				"background-color": style["bubble_bg_color"]
+			}).addClass("custom-bordered");
 		}
+		
 		if (style["rank-style"] !== 'rank') {
 			rankText = style["rank-text"];
 		}
+		
 		return New("tr")
 			.append(New("td")
 				.append(New("img")
@@ -139,16 +146,7 @@ $(document).ready(function() {
 						.text(style["nickname"])
 					)
 				)
-				.append(New("div")
-					.addClass("message" +" "+ bubblestyle)
-					.attr("id","message_box")
-					.text(message)
-					.attr({
-							"style":"border-image:url("+bubblleimage+") 8 stretch;background-color:"+$("#bubble_bg_color").val()+";"
-					})
-
-				)
-				
+				.append(messageDiv)
 			);
 		
 	}
