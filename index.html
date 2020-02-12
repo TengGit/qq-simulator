@@ -5,7 +5,9 @@
 <title>QQ Chat Simulator</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.adaptive-backgrounds.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+
 
 </head>
 <body>
@@ -73,7 +75,7 @@
 		<label for="rank-purple" class="rank rank-special-purple">专属紫</label>
 		<input type="radio" name="rank-style" value="rank rank-common-blue" id="rank-blue">
 		<label for="rank-blue" class="rank rank-common-blue">普通蓝</label>
-        <input type="text" name="rank" id="rank-text" size="12" maxlength="6" style="display: none;">
+
 		<br>
         <label for="nickname" class="input-name">Nickname: </label>
         <input type="text" name="nickname" id="nickname" value="Me">
@@ -85,7 +87,10 @@
         <label for="bubble_image" class="input-name">Bubble: </label>
         <input type="file" name="bubble-image" id="bubble_image" accept="image/*" style="display: none;">
         <input type="button" name="bubble-select-button" id="bubble-select-button" class="button" value="Select bubble">
-          <img id="bubble-preview" width="100px" height="40px"  class="bubble-image" >
+          <img id="bubble-preview" width="100px" height="40px"  class="bubble-image" src="">
+          <label for="bubble_bg_color">选择背景颜色：</label>
+          <input type="color" name="bubble_bg_color" id="bubble_bg_color">
+          <div style="color:red;">边框（包含上下左右）内沿距离图片边缘8-10像素的，且除边框以外其他部分为透明的图像最佳！</div>
     </div>
 		<div id="bubble_form2" class="control-group" style="display: none">
             <label for="bubble_image" class="input-name">Custom Bubble: </label>

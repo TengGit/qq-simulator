@@ -156,3 +156,8 @@ label {
 	border: none;
 	vertical-align: middle;
 }
+
+.bubble_message{
+	border-radius: 10px;
+	border:8px solid;
+}

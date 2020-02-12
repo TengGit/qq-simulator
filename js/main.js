@@ -104,8 +104,12 @@ $(document).ready(function() {
 	var createMessage = function(style, message) {
 		var bubblestyle = "";
 		var rankText = "";
+		var bubblleimage = "";
 		if (style["bubble"] === 'custom') {
 			bubblestyle = style["custom_bubble_style"];
+		}else if(style["bubble"] === 'other'){
+			bubblestyle = "bubble_message";
+			bubblleimage = $("#bubble-preview").attr("src");
 		}
 		if (style["rank-style"] !== 'rank') {
 			rankText = style["rank-text"];
@@ -137,9 +141,16 @@ $(document).ready(function() {
 				)
 				.append(New("div")
 					.addClass("message" +" "+ bubblestyle)
+					.attr("id","message_box")
 					.text(message)
+					.attr({
+							"style":"border-image:url("+bubblleimage+") 8 stretch;background-color:"+$("#bubble_bg_color").val()+";"
+					})
+
 				)
+				
 			);
+		
 	}
 	
 	var roleData = {};
@@ -173,6 +184,21 @@ $(document).ready(function() {
 	$("#avatar-select-button").on("click", function() {
 		$("#avatar").click();
 	});
+
+	$("#bubble-select-button").click(function() {
+		$("#bubble_image").click();
+	});
+	$("#bubble_image").change(function () {
+		var files = this.files;
+		var preview = $("#bubble-preview").get(0);
+		if (files.length) {
+			preview.src = window.URL.createObjectURL(files.item(0));
+		} else {
+			preview.src = defaultBubbleSrc;
+		}
+	})
+
+	$("#bubble-preview").attr("src",defaultBubbleSrc);
 	
 	$("#avatar").on("change", function() {
 		var files = this.files;
