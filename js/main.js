@@ -121,7 +121,7 @@ $(document).ready(function() {
 			rankText = style["rank-text"];
 		}
 		
-		return New("tr")
+		var item = New("tr")
 			.append(New("td")
 				.append(New("img")
 					.addClass("avatar-image")
@@ -147,8 +147,35 @@ $(document).ready(function() {
 					)
 				)
 				.append(messageDiv)
+			)
+			.append(New("td"))
+			.append(New("td")
+				.append(New("span")
+					.addClass("button")
+					.text("Recall")
+					.on("click", function() {
+						$(this.parentNode.parentNode).after(New("tr")
+							.addClass("recall-container")
+							.append(New("td")
+								.attr("colspan", "3")
+								.append(New("span")
+									.addClass("recall-message")
+									.text("某人撤回了一条消息")
+								)
+							)
+						).remove();
+					})
+				)
+				.append(New("span")
+					.addClass("button")
+					.text("Delete")
+					.on("click", function() {
+						$(this.parentNode.parentNode).remove();
+					})
+				)
 			);
 		
+		return item;
 	}
 	
 	var roleData = {};

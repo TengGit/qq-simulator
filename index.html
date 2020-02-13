@@ -5,7 +5,7 @@
 <title>QQ Chat Simulator</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery.adaptive-backgrounds.js"></script>
+<script type="text/javascript" src="js/jquery.adaptive-backgrounds.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 
 
@@ -13,7 +13,13 @@
 <body>
 <div id="container">
   <div id="preview" class="content-preview">
-    <table id="conversation"></table>
+    <table id="conversation" class="conversation">
+      <colgroup>
+        <col class="avatar-column">
+        <col class="content-column">
+        <col class="avatar-column">
+        <col class="control-column">
+    </table>
   </div>
   <div class="controls">
     <div class="frame-container">
