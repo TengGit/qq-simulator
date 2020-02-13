@@ -189,7 +189,9 @@ label {
 	width: auto;
 }
 
-.content-column {
+.control-column {
 	padding-left: 8px;
+	width: fit-content;
 }
+
 
