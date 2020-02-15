@@ -11,12 +11,13 @@ $(document).ready(function() {
     });
     $("#bg_set").click(function(){
         if(switchbg===1){
-            $("body").css({
-                "background": "url(\"" + $("#bg_preview").attr("src") + "\")  no-repeat center top"
+            $("#body_bg").css({
+                "background": "url(\"" + $("#bg_preview").attr("src") + "\")  no-repeat center center",
+                "background-size": "100%"
             });
         }else{
             var bgcolor = $("#bg_color").val();
-            $("body").css("background",bgcolor);
+            $("#body_bg").css("background",bgcolor);
         }
 
     });
