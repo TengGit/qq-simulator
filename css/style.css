@@ -26,6 +26,8 @@ label {
 	padding: 3px 5px;
 	margin: 2px;
 	background-color: rgba(230,230,230,0.5);
+	pointer: normal;
+	user-select: none;
 }
 
 .button:hover {
