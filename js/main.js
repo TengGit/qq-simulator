@@ -160,7 +160,7 @@ $(document).ready(function() {
 								.addClass("recall-container")
 								.append(New("span")
 									.addClass("recall-message")
-									.text("某人撤回了一条消息")
+									.text(style["nickname"]+"撤回了一条消息")
 								)
 							)
 						).remove();
