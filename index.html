@@ -4,14 +4,17 @@
 <meta charset="utf-8">
 <title>QQ Chat Simulator</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/customization.css">
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.adaptive-backgrounds.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/Customization.js"></script>
 
 
 </head>
-<body>
-<div id="container">
+<body >
+
+<div id="container" class="container_all">
   <div id="preview" class="content-preview">
     <table id="conversation" class="conversation">
       <colgroup>
@@ -26,12 +29,10 @@
       <div class="frame-title">Send message</div>
       <form id="send-message" class="control-group">
         <label for="role" class="input-name">Select from preset: </label>
-        <select name="role" id="role"></select>
+        <select name="role" id="role" class="select_"></select>
         <input type="button" name="remove-role" id="remove-role" value="Remove preset" class="button">
-        <label for="select_bubble" class="input-name" style="display: none" id="select_label_bubble">Select bubble:</label>
-        <select name="bubble" id="select_bubble" style="display: none"></select>
         <input type="button" name="remove-bubble" id="remove-bubble" value="Remove this bubble" class="button" style="display: none">
-        <input type="text" name="text" id="message" size="20">
+        <input type="text" name="text" id="message" size="20" class="input_text">
         <input type="submit" name="send" id="send" value="Send" class="button">
       </form>
     </div>
@@ -49,7 +50,7 @@
         <input type="radio" name="bubble" value="other" id="bubble-other"><label for="bubble-other">Other</label>
         <br>
         <label class="input-name">Rank: </label>
-          <select name="rank" id="rank-preset">
+          <select name="rank" id="rank-preset" class="select_">
               <option value="rank-none " selected></option>
 			  <option value="rank-blue 潜水">潜水</option>
 			  <option value="rank-blue 冒泡">冒泡</option>
@@ -67,7 +68,7 @@
 			  <option value="rank-red 江湖传说">江湖传说</option>
 			  <option value="rank-purple 王霸之气">专属称号</option>
           </select>
-		<input type="text" name="rank-text" id="rank-text" maxlength="6" size="12">
+		<input type="text" name="rank-text" id="rank-text" maxlength="6" size="12" class="input_text">
 		<input type="radio" name="rank-style" value="rank" id="rank-none" checked><label for="rank-none">None</label>
 		<input type="radio" name="rank-style" value="rank rank-host-yellow" id="rank-yellow">
 		<label for="rank-yellow" class="rank rank-host-yellow">群主黄</label>
@@ -84,9 +85,9 @@
 
 		<br>
         <label for="nickname" class="input-name">Nickname: </label>
-        <input type="text" name="nickname" id="nickname" value="Me">
+        <input type="text" name="nickname" id="nickname" value="Me" class="input_text">
 		<br>
-		<input type="text" name="role-name" id="role-name" value="Default">
+		<input type="text" name="role-name" id="role-name" value="Default" class="input_text">
         <input type="submit" name="add-role" id="add-role" value="Save/update preset" class="button">
 		<br>
       <div id="bubble_form" class="control-group" style="display: none">
@@ -95,7 +96,7 @@
         <input type="button" name="bubble-select-button" id="bubble-select-button" class="button" value="Select bubble">
           <img id="bubble-preview" width="100px" height="40px"  class="bubble-image" src="">
           <label for="bubble_bg_color">选择背景颜色：</label>
-          <input type="color" name="bubble_bg_color" id="bubble_bg_color" value="#ffffff">
+          <input type="color" name="bubble_bg_color" id="bubble_bg_color" value="#ffffff" class="input_color">
           <div style="color:red;">边框（包含上下左右）内沿距离图片边缘8-10像素的，且除边框以外其他部分为透明的图像最佳！</div>
     </div>
 		<div id="bubble_form2" class="control-group" style="display: none">
@@ -110,8 +111,32 @@
             <label for="CB1" class="CB CB4">样式4</label>
 		</div>
       </form>
+
     </div>
+    <div class="frame-container">
+        <div class="frame-title">Customization</div>
+        <form id="customization" class="control-group">
+        <label for="bg_color" class="input-name">选择背景颜色：</label>
+        <input type="color" name="bg_color" id="bg_color" value="#ffffff" class="input_color">
+            <br>
+            <label for="bg_color" class="input-name">选择背景图片：</label>
+            <input type="file" name="bg_img" id="bg_img" accept="image/*" style="display: none;">
+            <input type="button" name="select_bg_img" id="select_bg_img" class="button" value="select image">
+            <img id="bg_preview" width="10px" height="4px" style="display: none;">
+
+            <br>
+            <label for="color" >颜色背景：</label>
+            <input type="radio" name="if_bg" id="color" value="color">
+            <label for="img" >图片背景：</label>
+            <input type="radio" name="if_bg" id="img" value="img" checked>
+            <br>
+        <label for="bg_set" class="input-name"></label>
+        <input type="button" name="bg_set" id="bg_set" value="Set" class="button">
+        </form>
+    </div>
+
   </div>
 </div>
+
 </body>
 </html>
