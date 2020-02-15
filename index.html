@@ -114,24 +114,24 @@
 
     </div>
     <div class="frame-container">
-        <div class="frame-title">Customization</div>
+        <div class="frame-title">Background</div>
         <form id="customization" class="control-group">
+		<div id="bg-color-select" style="display: none;">
         <label for="bg_color" class="input-name">选择背景颜色：</label>
         <input type="color" name="bg_color" id="bg_color" value="#ffffff" class="input_color">
-            <br>
+		</div>
+            <div id="bg-img-select">
             <label for="bg_color" class="input-name">选择背景图片：</label>
             <input type="file" name="bg_img" id="bg_img" accept="image/*" style="display: none;">
             <input type="button" name="select_bg_img" id="select_bg_img" class="button" value="select image">
             <img id="bg_preview" width="10px" height="4px" style="display: none;">
+            </div>
 
+            <input type="radio" name="if_bg" id="color-bg" value="color">
+            <label for="color-bg">纯色背景</label>
+            <input type="radio" name="if_bg" id="img-bg" value="img" checked>
+            <label for="img-bg">图片背景</label>
             <br>
-            <label for="color" >颜色背景：</label>
-            <input type="radio" name="if_bg" id="color" value="color">
-            <label for="img" >图片背景：</label>
-            <input type="radio" name="if_bg" id="img" value="img" checked>
-            <br>
-        <label for="bg_set" class="input-name"></label>
-        <input type="button" name="bg_set" id="bg_set" value="Set" class="button">
         </form>
     </div>
 
