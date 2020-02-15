@@ -1,0 +1,34 @@
+body{
+    width:100%;
+    height:100%;
+    position: relative;
+    background: url("../img/customization/default.jpg") no-repeat center top;
+    background-size: 100%;
+    overflow: hidden;
+}
+
+
+
+input.input_text{
+    border:2px solid rgba(230,230,230,0.5);
+    margin: 2px;
+    background: rgba(230,230,230,0.5);
+}
+select.select_{
+    background: rgba(230,230,230,0.5);
+    margin: 2px;
+}
+input.input_color{
+    background: rgba(230,230,230,0.5);
+    margin: 2px;
+    width:50px;
+    padding: 1px;
+    border:1px solid rgba(230,230,230,0.5);
+}
+div.container_all{
+    margin: 0 6%;
+    padding: 1% 0 2% 0;
+    border: 1px hidden;
+    background: rgba(230,230,230,0.6);
+
+}

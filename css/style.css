@@ -11,8 +11,8 @@ label {
 }
 
 .controls {
-	margin-left: 10%;
-	margin-right: 10%;
+	margin-left: 4%;
+	margin-right: 4%;
 }
 
 .control-group {
@@ -21,10 +21,11 @@ label {
 }
 
 .button {
-	border: solid 1px gray;
+	border: solid 1px rgba(230,230,230,0.5);
 	border-radius: 3px;
 	padding: 3px 5px;
-	background-color: #eee;
+	margin: 2px;
+	background-color: rgba(230,230,230,0.5);
 }
 
 .button:hover {
@@ -32,7 +33,7 @@ label {
 }
 
 .button:active {
-	background-color: #ccc;
+	background-color:rgba(230,230,230,0.5);
 }
 
 .avatar-image {
@@ -42,7 +43,7 @@ label {
 }
 
 .content-preview {
-	margin: 10px 10%;
+	margin: 10px 4%;
 	padding: 10px;
 	border: solid 1px gray;
 }
